@@ -12,12 +12,12 @@ module.exports = function (app) {
 
     // GET ALL NOTES
     app.get("/api/notes", function (req, res) {
-        return res.json(notes)
+        res.json(notes)
     })
 
     // GET SINGLE NOTE
     app.get("/api/notes/:id", function (req, res) {
-        const found = res.json(notes.filter(note => note.id === parseInt(req.params.id)));
+        const found = notes.some(note => note.id === parseInt(req.params.id));
 
         if (found) {
             res.json(notes.filter(note => note.id === parseInt(req.params.id)));
@@ -29,6 +29,7 @@ module.exports = function (app) {
 
     // API Post 
     app.post("/api/notes", function (req, res) {
+        //const newNote = req.body;
         const newNote = {
             id: req.body.id,
             title: req.body.title,
