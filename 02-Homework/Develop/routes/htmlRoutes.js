@@ -10,6 +10,7 @@ module.exports = function(app) {
         res.sendFile(path.join(__dirname, "../public/notes.html"));
     });
 
+    //i want to use app.get("*", ) but this is messing up the notes.html file
     app.get("/", function(req, res) {
         res.sendFile(path.join(__dirname, "../public/index.html"))
     });
