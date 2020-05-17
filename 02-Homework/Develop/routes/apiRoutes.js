@@ -1,16 +1,10 @@
 // LOAD DATA
 let notes = require("../db/db.json");
-console.log(notes);
-
-const util = require("util");
-const fs = require("fs");
-const readFileAsync = util.promisify(fs.readFile);
-const writeFileAsync = util.promisify(fs.writeFile);
 
 // Routing
 module.exports = function (app) {
 
-    // GET ALL NOTES
+    // GET NOTES
     app.get("/api/notes", function (req, res) {
         res.json(notes)
     })
@@ -29,9 +23,14 @@ module.exports = function (app) {
 
     // API Post 
     app.post("/api/notes", function (req, res) {
-        //const newNote = req.body;
+
+
+        for (var i = 0; i < notes.length; i++) {
+            var newId = notes.length
+        }
+
         const newNote = {
-            id: req.body.id,
+            id: newId,
             title: req.body.title,
             text: req.body.text,
 
